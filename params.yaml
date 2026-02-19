@@ -1,0 +1,87 @@
+data:
+  secom_url: "https://archive.ics.uci.edu/ml/machine-learning-databases/secom/secom.data"
+  secom_labels_url: "https://archive.ics.uci.edu/ml/machine-learning-databases/secom/secom_labels.data"
+  test_size: 0.2
+  val_size: 0.1
+  random_seed: 42
+  target_col: "label"
+
+feature_engineering:
+  variance_threshold: 0.01
+  correlation_threshold: 0.95
+  missing_threshold: 0.5
+  imputation_strategy: "median"
+
+graph:
+  edge_method: "correlation"
+  correlation_threshold: 0.7
+  max_neighbors: 10
+
+baseline:
+  xgboost:
+    n_estimators: 500
+    max_depth: 6
+    learning_rate: 0.05
+    subsample: 0.8
+    colsample_bytree: 0.8
+    scale_pos_weight: 13
+    eval_metric: "auc"
+    early_stopping_rounds: 50
+  lightgbm:
+    n_estimators: 500
+    max_depth: 6
+    learning_rate: 0.05
+    num_leaves: 63
+    subsample: 0.8
+    colsample_bytree: 0.8
+    is_unbalance: true
+    metric: "auc"
+    early_stopping_rounds: 50
+
+gnn:
+  model_type: "GAT"
+  hidden_channels: 128
+  num_layers: 3
+  dropout: 0.3
+  heads: 4
+  aggregation: "mean"
+  learning_rate: 0.001
+  weight_decay: 0.0005
+  epochs: 300
+  patience: 30
+  batch_size: 64
+
+ensemble:
+  gnn_weight: 0.6
+  tabular_weight: 0.4
+
+active_learning:
+  initial_labeled_ratio: 0.2
+  query_strategy: "least_confidence"
+  n_queries: 10
+  query_batch_size: 20
+
+optuna:
+  n_trials: 50
+  timeout: 3600
+  direction: "maximize"
+  metric: "val_auc"
+
+training:
+  device: "auto"
+  mlflow_experiment: "semiconductor-yield"
+  mlflow_tracking_uri: "mlflow_tracking/"
+
+causal:
+  algorithm: "PC"
+  alpha: 0.05
+  top_k_features: 20
+
+api:
+  host: "0.0.0.0"
+  port: 8000
+  model_path: "models/best_model.pkl"
+
+dashboard:
+  port: 8050
+  debug: false
