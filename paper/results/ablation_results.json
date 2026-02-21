@@ -1,0 +1,42 @@
+[
+  {
+    "model": "GCN",
+    "graph": "Pearson (v1)",
+    "auc": 0.6613,
+    "f1": 0.2034,
+    "mcc": 0.1521,
+    "ap": 0.1193
+  },
+  {
+    "model": "LightGBM",
+    "graph": "N/A (tabular)",
+    "auc": 0.6751,
+    "f1": 0.1143,
+    "mcc": 0.0657,
+    "ap": 0.1236
+  },
+  {
+    "model": "GCN+LightGBM Ensemble",
+    "graph": "Pearson (v1)",
+    "auc": 0.694,
+    "f1": 0.0667,
+    "mcc": 0.0304,
+    "ap": 0.1282
+  },
+  {
+    "model": "GCN",
+    "graph": "Multi-Criterion (v2)",
+    "auc": 0.6075,
+    "f1": 0.1333,
+    "mcc": 0.0378,
+    "ap": 0.1113
+  },
+  {
+    "model": "GCN+LightGBM Ensemble",
+    "graph": "Multi-Criterion (v2)",
+    "auc": 0.6894,
+    "f1": 0.069,
+    "mcc": 0.0376,
+    "ap": 0.1261
+  }
+]
