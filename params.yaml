@@ -68,7 +68,7 @@ optuna:
   metric: "val_auc"
 
 training:
-  device: "auto"
+  device: "cpu"
   mlflow_experiment: "semiconductor-yield"
   mlflow_tracking_uri: "mlflow_tracking/"
 
