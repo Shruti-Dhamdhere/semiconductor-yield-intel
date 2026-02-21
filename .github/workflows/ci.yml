@@ -23,7 +23,7 @@ jobs:
           pip install torch==2.2.0 --index-url https://download.pytorch.org/whl/cpu
           pip install torch-geometric==2.5.0
           pip install black flake8 isort pytest pytest-cov
-          pip install pandas numpy scikit-learn xgboost lightgbm shap mlflow pydantic fastapi loguru
+          pip install pandas numpy scikit-learn xgboost lightgbm shap mlflow pydantic fastapi loguru httpx
 
       - name: Check Python syntax
         run: python -m py_compile src/data/loader.py src/models/baseline.py src/api/main.py && echo "Syntax OK" 
