@@ -102,26 +102,6 @@ SECOM Dataset, UCI Machine Learning Repository
 
 ---
 
-## Quickstart
-```bash
-git clone https://github.com/Shruti-Dhamdhere/semiconductor-yield-intel.git
-cd semiconductor-yield-intel
-python -m venv venv && source venv/bin/activate
-pip install -r requirements.txt
-python src/data/loader.py
-python src/data/graph_builder.py
-python src/models/baseline.py
-python src/training/trainer.py
-python src/explainability/shap_analysis.py
-python src/explainability/causal_discovery.py
-python src/training/ablation.py
-uvicorn src.api.main:app --port 8000
-python dashboard/app.py
-pytest tests/ -v
-```
-
----
-
 ## Paper
 
 Target: Expert Systems with Applications (Elsevier, IF 8.5)
